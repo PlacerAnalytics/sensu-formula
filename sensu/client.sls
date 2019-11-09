@@ -51,7 +51,9 @@ sensu_standalone_checks_file:
     - dataset:
         client:
           name: {{ sensu.client.name }}
+          {% if sensu.client.get('address') %}
           address: {{ sensu.client.address }}
+          {% endif %}
           subscriptions: {{ sensu.client.subscriptions }}
           safe_mode: {{ sensu.client.safe_mode }}
           {% if sensu.client.get('keepalive') %}
